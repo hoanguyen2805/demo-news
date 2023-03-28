@@ -17,7 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('news/create', [EditorController::class, 'index'])->name('ck_index');
+Route::post('news/post', [EditorController::class, 'store'])->name('ck_post');
+Route::post('news/image_upload', [EditorController::class, 'upload'])->name('upload');
+
 Route::get('news/{news_id}', [EditorController::class, 'detailNews'])->name('news.detail');
-Route::get('editor', [EditorController::class, 'index'])->name('ck_index');
-Route::post('store', [EditorController::class, 'store'])->name('ck_post');
-Route::post('editor/image_upload', [EditorController::class, 'upload'])->name('upload');

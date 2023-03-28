@@ -16,9 +16,8 @@ class EditorController extends Controller
 
     public function store(Request $request)
     {
-        //dd($request);
-        News::create($request->all());
-        // dd($request->body);
+        $data = News::create($request->all());
+        return redirect()->route('news.detail', ['news_id' => $data->id]);
     }
 
     public function upload(Request $request)

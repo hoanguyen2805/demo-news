@@ -35,18 +35,18 @@
                         <label for="author_id" class="form-label">Author</label>
                         <select id="author_id" class="form-select" name="author_id">
                             <option selected>Choose...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                            @foreach (config('constant.author') as $key => $value)
+                            <option value="{{$key}}">{{$value}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label for="category_id" class="form-label">Category</label>
-                        <select id="category_id" class="form-select" name="category_id">
+                        <select id="category_id" class="form-select" name="category_id" required>
                             <option selected>Choose...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                            @foreach (config('constant.category') as $key => $value)
+                            <option value="{{$key}}">{{$value}}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-12">
@@ -76,7 +76,6 @@
             toolbarLocation: 'top',
             extraPlugins: ['wordcount', 'colorbutton'],
             wordcount: {
-                // find setting https://ckeditor.com/cke4/addon/wordcount
                 showParagraphs: false,
                 showWordCount: false,
                 showCharCount: true,
@@ -121,27 +120,6 @@
                 },
             ],
             image_previewText: ' ',
-        });
-
-        // CKEDITOR.on('body', function(event) {
-        //     // Add default CSS for inserted images
-        //     CKEDITOR.addCss('img.my-class { max-width: 100%; height: auto; }');
-        // });
-
-        CKEDITOR.on('instanceReady', function(event) {
-            // Automatically add CSS to uploaded images
-            var editor = event.editor;
-            editor.on('fileUploadRequest', function(event) {
-                event.data.fileLoader.on('load', function() {
-                    var img = new CKEDITOR.dom.element('img');
-                    img.setAttribute('src', event.data.fileLoader.dataUrl);
-                    img.setAttribute('style', 'max-width: 100%; height: auto;');
-                    var div = new CKEDITOR.dom.element('div');
-                    div.setAttribute('style', 'border: 1px solid black; padding: 5px;');
-                    div.append(img);
-                    event.data.fileLoader.dataUrl = div.getHtml();
-                });
-            });
         });
     </script>
 </body>

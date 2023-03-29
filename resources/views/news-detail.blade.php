@@ -14,8 +14,9 @@
         }
         blockquote {
             background-color: #F8F6F1;
-            padding: 0 20px 20px 20px;
+            padding: 20px 20px 20px 20px;
             border-left: 10px solid darkgray;
+            margin-bottom: 30px;
         }
         .category {
             color: #888;

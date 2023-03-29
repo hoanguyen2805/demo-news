@@ -24,6 +24,9 @@ class News extends Model
         'title',
         'body',
         'author_id',
-        'category_id'
+        'category_id',
+        'status',
+        'slug',
+        'hashtag'
     ];
 }

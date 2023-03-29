@@ -16,7 +16,11 @@ class EditorController extends Controller
 
     public function store(Request $request)
     {
-        $data = News::create($request->all());
+        $data = $request->all();
+        $data['hashtag'] = 'ee';
+        $data['slug'] = 'e';
+        $data['status'] = 1;
+        $data = News::create($data);
         return redirect()->route('news.detail', ['news_id' => $data->id]);
     }
 
@@ -59,6 +63,7 @@ class EditorController extends Controller
     public function detailNews($id)
     {
         $detail = News::find($id);
+        //return response()->json($detail);
         return  view('news-detail', compact('detail'));
     }
 
